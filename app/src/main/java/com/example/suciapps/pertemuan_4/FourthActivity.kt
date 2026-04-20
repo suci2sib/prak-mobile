@@ -52,6 +52,7 @@ class FourthActivity : AppCompatActivity() {
                 }
                 .setNegativeButton("Batal") { dialog, _ ->
                     dialog.dismiss()
+
                     Log.e("Info Dialog", "User memilih Batal!")
                 }
                 .setCancelable(true)

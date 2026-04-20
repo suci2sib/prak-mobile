@@ -13,12 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SuciApps">
-
         <activity
-            android:name=".pertemuan_5.WebViewActivity"
+            android:name=".pertemuan_6.AuthActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan_5.FifthActivity"
+            android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +25,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pertemuan_5.FifthActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pertemuan_5.WebViewActivity"
+            android:exported="false" />
         <activity
             android:name=".pertemuan_4.FourthActivity"
             android:exported="false" />
@@ -37,9 +45,6 @@
             android:exported="false" />
         <activity
             android:name=".pertemuan_3.ThirdActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="false" />
     </application>
 

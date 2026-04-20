@@ -2,15 +2,23 @@ package com.example.suciapps
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.suciapps.databinding.ActivityAuthBinding
+import com.example.suciapps.databinding.ActivityMainBinding
 // Import ini penting agar MainActivity mengenali FourthActivity
 import com.example.suciapps.pertemuan_4.FourthActivity
+import com.example.suciapps.pertemuan_6.AuthActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -21,10 +29,13 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
         // 1. Inisialisasi tombol berdasarkan ID yang ada di activity_main.xml
         val btnToFourth = findViewById<Button>(R.id.btnToFourth)
+
 
         // 2. Memberikan aksi klik pada tombol
         btnToFourth.setOnClickListener {
@@ -37,6 +48,24 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(intent)
             finish()
+        }
+        binding.btnLogout.setOnClickListener {
+            MaterialAlertDialogBuilder(this)
+                .setTitle("Konfirmasi")
+                .setMessage("Apakah Anda yakin ingin keluar?")
+                .setPositiveButton("Ya") { dialog, _ ->
+                    sharedPref.edit {
+                        clear()
+                    }
+                    dialog.dismiss()
+                    val intent = Intent(this, AuthActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                .setNegativeButton("Batal") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .show()
         }
     }
 }
