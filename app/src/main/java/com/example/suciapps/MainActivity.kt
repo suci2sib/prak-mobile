@@ -9,12 +9,12 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.suciapps.databinding.ActivityMainBinding
 // Import semua Activity tujuan
-import com.example.suciapps.pertemuan_2.SecondActivity
-import com.example.suciapps.pertemuan_3.ThirdActivity
-import com.example.suciapps.pertemuan_4.FourthActivity
-import com.example.suciapps.pertemuan_5.FifthActivity
+import com.example.suciapps.Home.pertemuan_2.SecondActivity
+import com.example.suciapps.Home.pertemuan_3.ThirdActivity
+import com.example.suciapps.Home.pertemuan_4.FourthActivity
+import com.example.suciapps.Home.pertemuan_5.FifthActivity
 import com.example.suciapps.pertemuan_6.AuthActivity
-import com.example.suciapps.pertemuan_7.SeventhActivity
+import com.example.suciapps.Home.pertemuan_7.SeventhActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class MainActivity : AppCompatActivity() {

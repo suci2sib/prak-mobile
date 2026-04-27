@@ -1,4 +1,4 @@
-package com.example.suciapps.pertemuan_7
+package com.example.suciapps.Home.pertemuan_7
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
