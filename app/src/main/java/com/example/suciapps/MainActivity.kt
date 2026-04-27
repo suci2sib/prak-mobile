@@ -2,18 +2,19 @@ package com.example.suciapps
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.suciapps.databinding.ActivityAuthBinding
 import com.example.suciapps.databinding.ActivityMainBinding
-// Import ini penting agar MainActivity mengenali FourthActivity
+// Import semua Activity tujuan
+import com.example.suciapps.pertemuan_2.SecondActivity
+import com.example.suciapps.pertemuan_3.ThirdActivity
 import com.example.suciapps.pertemuan_4.FourthActivity
+import com.example.suciapps.pertemuan_5.FifthActivity
 import com.example.suciapps.pertemuan_6.AuthActivity
+import com.example.suciapps.pertemuan_7.SeventhActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class MainActivity : AppCompatActivity() {
@@ -22,43 +23,68 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        // Setup View Binding
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // Mengatur padding agar UI tidak tertutup status bar/notch
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
-        // 1. Inisialisasi tombol berdasarkan ID yang ada di activity_main.xml
-        val btnToFourth = findViewById<Button>(R.id.btnToFourth)
 
+        // --- NAVIGASI TOMBOL ---
 
-        // 2. Memberikan aksi klik pada tombol
-        btnToFourth.setOnClickListener {
-            // Berpindah dari MainActivity ke FourthActivity
-            val intent = Intent(this, FourthActivity::class.java)
-
-            intent.putExtra("nama", "Politeknik Caltex Riau")
-            intent.putExtra("asal", "Rumbai")
-            intent.putExtra("umur", 25)
-
+        // 1. Pertemuan 2
+        binding.btnToSecond.setOnClickListener {
+            val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
-            finish()
         }
+
+        // 2. Pertemuan 3
+        binding.btnToThird.setOnClickListener {
+            val intent = Intent(this, ThirdActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 3. Pertemuan 4
+        binding.btnToFourth.setOnClickListener {
+            val intent = Intent(this, FourthActivity::class.java).apply {
+                putExtra("nama", "Politeknik Caltex Riau")
+                putExtra("asal", "Rumbai")
+                putExtra("umur", 25)
+            }
+            startActivity(intent)
+        }
+
+        // 4. Pertemuan 5
+        binding.btnToFifth.setOnClickListener {
+            val intent = Intent(this, FifthActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 5. Pertemuan 7
+        binding.btnToSeventh.setOnClickListener {
+            val intent = Intent(this, SeventhActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 6. Tombol Logout
         binding.btnLogout.setOnClickListener {
             MaterialAlertDialogBuilder(this)
                 .setTitle("Konfirmasi")
                 .setMessage("Apakah Anda yakin ingin keluar?")
                 .setPositiveButton("Ya") { dialog, _ ->
-                    sharedPref.edit {
-                        clear()
-                    }
-                    dialog.dismiss()
+                    // Hapus session login
+                    sharedPref.edit { clear() }
+
+                    // Pindah ke halaman Login (AuthActivity)
                     val intent = Intent(this, AuthActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                     finish()
                 }

@@ -1,0 +1,13 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#AE147BE9">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:text="Setiap luka itu cuma cara semesta bilang kalau ada bagian dari kita yang perlu di-update jadi lebih kuat."
+        android:textSize="40sp" />
+</FrameLayout>

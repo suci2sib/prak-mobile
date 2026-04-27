@@ -1,0 +1,13 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A0FF9100">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Perasaan itu bukan soal seberapa cepat kamu respond, tapi seberapa tulus kamu stay connected."
+        android:textSize="40sp"
+        android:gravity="center"
+        android:fontFamily="sans-serif-black" />
+</FrameLayout>

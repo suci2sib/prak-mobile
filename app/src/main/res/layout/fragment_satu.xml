@@ -1,0 +1,13 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EFA2FF">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Seringkali, diam adalah cara paling aman untuk menjaga agar hati nggak crash karena ekspektasi."
+        android:textSize="40sp"
+        android:gravity="center"
+        android:fontFamily="sans-serif-black" />
+</FrameLayout>
