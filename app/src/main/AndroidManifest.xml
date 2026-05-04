@@ -14,7 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SuciApps">
 
-        <!-- SplashScreen sebagai Launcher -->
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
@@ -25,45 +24,20 @@
         </activity>
 
         <activity
-            android:name=".BaseActivity"
-            android:exported="false" />
+            android:name=".Home.pertemuan_9.NinthActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
-        <activity
-            android:name=".pertemuan_6.AuthActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".Home.pertemuan_7.SeventhActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".Home.pertemuan_5.FifthActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".Home.pertemuan_5.WebViewActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".Home.pertemuan_4.FourthActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".Home.pertemuan_3.ThirdActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".Home.pertemuan_3.ThirdResultActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".Home.pertemuan_2.SecondActivity"
-            android:exported="false" />
+        <activity android:name=".BaseActivity" android:exported="false" />
+        <activity android:name=".AuthActivity" android:exported="false" />
+        <activity android:name=".MainActivity" android:exported="false" />
+        <activity android:name=".Home.pertemuan_7.SeventhActivity" android:exported="false" />
+        <activity android:name=".Home.pertemuan_5.FifthActivity" android:exported="false" />
+        <activity android:name=".Home.pertemuan_5.WebViewActivity" android:exported="false" />
+        <activity android:name=".Home.pertemuan_4.FourthActivity" android:exported="false" />
+        <activity android:name=".Home.pertemuan_3.ThirdActivity" android:exported="false" />
+        <activity android:name=".Home.pertemuan_3.ThirdResultActivity" android:exported="false" />
+        <activity android:name=".Home.pertemuan_2.SecondActivity" android:exported="false" />
 
     </application>
-
 </manifest>

@@ -6,21 +6,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.fragment.app.Fragment
-// Import Activity - Pastikan path ini sesuai dengan folder kamu
+import com.example.suciapps.AuthActivity
+import com.example.suciapps.databinding.FragmentHomeBinding
 import com.example.suciapps.Home.pertemuan_2.SecondActivity
 import com.example.suciapps.Home.pertemuan_3.ThirdActivity
 import com.example.suciapps.Home.pertemuan_4.FourthActivity
 import com.example.suciapps.Home.pertemuan_5.FifthActivity
 import com.example.suciapps.Home.pertemuan_7.SeventhActivity
-import com.example.suciapps.pertemuan_6.AuthActivity
-import com.example.suciapps.databinding.FragmentHomeBinding
-import androidx.core.content.edit
+import com.example.suciapps.Home.pertemuan_9.NinthActivity
 
 class HomeFragment : Fragment() {
 
-    // 1. Inisialisasi Binding
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -28,7 +28,6 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate layout menggunakan binding
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -36,60 +35,58 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 2. Setup Toolbar (Agar judul muncul di atas)
-        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
-        (requireActivity() as AppCompatActivity).supportActionBar?.apply {
-            title = "Home"
-        }
+        // Setup Toolbar agar muncul judul "Home"
+        (activity as? AppCompatActivity)?.setSupportActionBar(binding.toolbar)
+        (activity as? AppCompatActivity)?.supportActionBar?.title = "Home"
 
-        // 3. Tombol Navigasi ke Pertemuan-pertemuan
-        binding.btnToSecond.setOnClickListener {
-            val intent = Intent(requireContext(), SecondActivity::class.java)
-            startActivity(intent)
-        }
+        setupNavigation()
+    }
 
-        binding.btnToThird.setOnClickListener {
-            val intent = Intent(requireContext(), ThirdActivity::class.java)
-            startActivity(intent)
-        }
+    private fun setupNavigation() {
+        binding.apply {
+            // Navigasi Standar
+            btnToSecond.setOnClickListener { move(SecondActivity::class.java) }
+            btnToThird.setOnClickListener { move(ThirdActivity::class.java) }
 
-        binding.btnToFourth.setOnClickListener {
-            val intent = Intent(requireContext(), FourthActivity::class.java).apply {
-                putExtra("nama", "Politeknik Caltex Riau")
-                putExtra("asal", "Rumbai")
-                putExtra("umur", 25)
-            }
-            startActivity(intent)
-        }
-
-        binding.btnToFifth.setOnClickListener {
-            val intent = Intent(requireContext(), FifthActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.btnToSeventh.setOnClickListener {
-            val intent = Intent(requireContext(), SeventhActivity::class.java)
-            startActivity(intent)
-        }
-
-        // 4. Tombol Logout (Sesuai instruksi modul)
-        binding.btnLogout.setOnClickListener {
-            // Hapus session login
-            val sharedPref = requireContext().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
-            sharedPref.edit {
-                clear()
+            // Navigasi dengan Data (Pertemuan 4)
+            btnToFourth.setOnClickListener {
+                val intent = Intent(requireContext(), FourthActivity::class.java).apply {
+                    putExtra("nama", "Politeknik Caltex Riau")
+                    putExtra("asal", "Rumbai")
+                    putExtra("umur", 25)
+                }
+                startActivity(intent)
             }
 
-            // Kembali ke halaman Login (AuthActivity)
-            val intent = Intent(requireContext(), AuthActivity::class.java)
-            startActivity(intent)
+            btnToFifth.setOnClickListener { move(FifthActivity::class.java) }
+            btnToSeventh.setOnClickListener { move(SeventhActivity::class.java) }
 
-            // Menutup BaseActivity agar tidak bisa di-Back
-            requireActivity().finish()
+            // Tombol Pertemuan 9 (Ditambah pengaman agar tidak langsung crash)
+            btnToNinth.setOnClickListener {
+                try {
+                    val intent = Intent(requireContext(), NinthActivity::class.java)
+                    startActivity(intent)
+                } catch (e: Exception) {
+                    android.util.Log.e("ERROR_SUCI", "Gagal buka Halaman 9: ${e.message}")
+                    Toast.makeText(requireContext(), "Gagal buka Halaman 9, cek Logcat!", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            // Fungsi Logout
+            btnLogout.setOnClickListener {
+                val sharedPref = requireContext().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
+                sharedPref.edit { clear() }
+                move(AuthActivity::class.java)
+                requireActivity().finish()
+            }
         }
     }
 
-    // 5. Membersihkan binding saat fragment hancur (mencegah memory leak)
+    // Fungsi pembantu (helper) biar kode lebih pendek
+    private fun move(cls: Class<*>) {
+        startActivity(Intent(requireContext(), cls))
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

@@ -13,7 +13,7 @@ import com.example.suciapps.Home.pertemuan_2.SecondActivity
 import com.example.suciapps.Home.pertemuan_3.ThirdActivity
 import com.example.suciapps.Home.pertemuan_4.FourthActivity
 import com.example.suciapps.Home.pertemuan_5.FifthActivity
-import com.example.suciapps.pertemuan_6.AuthActivity
+import com.example.suciapps.AuthActivity
 import com.example.suciapps.Home.pertemuan_7.SeventhActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 

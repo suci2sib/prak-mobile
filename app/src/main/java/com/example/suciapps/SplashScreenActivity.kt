@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
-import com.example.suciapps.pertemuan_6.AuthActivity
+import com.example.suciapps.AuthActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
