@@ -1,3 +1,4 @@
+// 1. Sesuaikan package paling atas menggunakan H besar agar sinkron dengan folder asli
 package com.example.suciapps.home
 
 import android.content.Context
@@ -11,13 +12,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import com.example.suciapps.AuthActivity
-import com.example.suciapps.databinding.FragmentHomeBinding
 import com.example.suciapps.Home.pertemuan_2.SecondActivity
 import com.example.suciapps.Home.pertemuan_3.ThirdActivity
 import com.example.suciapps.Home.pertemuan_4.FourthActivity
 import com.example.suciapps.Home.pertemuan_5.FifthActivity
 import com.example.suciapps.Home.pertemuan_7.SeventhActivity
 import com.example.suciapps.Home.pertemuan_9.NinthActivity
+import com.example.suciapps.databinding.FragmentHomeBinding
+import com.example.suciapps.home.pertemuan_10.TenthActivity
 
 class HomeFragment : Fragment() {
 
@@ -61,7 +63,7 @@ class HomeFragment : Fragment() {
             btnToFifth.setOnClickListener { move(FifthActivity::class.java) }
             btnToSeventh.setOnClickListener { move(SeventhActivity::class.java) }
 
-            // Tombol Pertemuan 9 (Ditambah pengaman agar tidak langsung crash)
+            // Tombol Pertemuan 9
             btnToNinth.setOnClickListener {
                 try {
                     val intent = Intent(requireContext(), NinthActivity::class.java)
@@ -70,6 +72,11 @@ class HomeFragment : Fragment() {
                     android.util.Log.e("ERROR_SUCI", "Gagal buka Halaman 9: ${e.message}")
                     Toast.makeText(requireContext(), "Gagal buka Halaman 9, cek Logcat!", Toast.LENGTH_SHORT).show()
                 }
+            }
+
+            // Tombol Pertemuan 10 (Memanggil TenthActivity)
+            btnToTenth.setOnClickListener {
+                move(TenthActivity::class.java)
             }
 
             // Fungsi Logout
@@ -82,8 +89,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    // Fungsi pembantu (helper) biar kode lebih pendek
-    private fun move(cls: Class<*>) {
+    // 2. PERBAIKAN: Mengubah Class<*> menjadi Class<out AppCompatActivity> agar tipenya aman dan spesifik
+    private fun move(cls: Class<out AppCompatActivity>) {
         startActivity(Intent(requireContext(), cls))
     }
 
