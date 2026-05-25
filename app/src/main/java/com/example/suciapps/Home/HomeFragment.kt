@@ -9,8 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.edit
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.core.content.edit
 import com.example.suciapps.AuthActivity
 import com.example.suciapps.Home.pertemuan_2.SecondActivity
 import com.example.suciapps.Home.pertemuan_3.ThirdActivity
@@ -18,8 +19,12 @@ import com.example.suciapps.Home.pertemuan_4.FourthActivity
 import com.example.suciapps.Home.pertemuan_5.FifthActivity
 import com.example.suciapps.Home.pertemuan_7.SeventhActivity
 import com.example.suciapps.Home.pertemuan_9.NinthActivity
+import com.example.suciapps.data.api.CatFactApiClient
 import com.example.suciapps.databinding.FragmentHomeBinding
 import com.example.suciapps.home.pertemuan_10.TenthActivity
+// Pastikan package ApiClient kamu sudah sesuai, di bawah ini adalah perkiraan standar paketnya:
+// import com.example.suciapps.network.CatFactApiClient
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
@@ -42,6 +47,14 @@ class HomeFragment : Fragment() {
         (activity as? AppCompatActivity)?.supportActionBar?.title = "Home"
 
         setupNavigation()
+
+        // Memanggil fungsi untuk memuat fakta kucing saat pertama kali halaman dibuka
+        loadCatFact()
+
+        // Listener untuk tombol refresh fakta kucing
+        binding.btnRefresh.setOnClickListener {
+            loadCatFact()
+        }
     }
 
     private fun setupNavigation() {
@@ -85,6 +98,21 @@ class HomeFragment : Fragment() {
                 sharedPref.edit { clear() }
                 move(AuthActivity::class.java)
                 requireActivity().finish()
+            }
+        }
+    }
+
+    // Fungsi mengambil fakta kucing dari API Client secara asynchronous
+    private fun loadCatFact() {
+        lifecycleScope.launch {
+            try {
+                // Tampilkan teks loading terlebih dahulu sebelum memanggil API
+                binding.tvCatFact.text = "Loading cat fact..."
+
+                val response = CatFactApiClient.apiService.getCatFact()
+                binding.tvCatFact.text = "\"${response.fact}\""
+            } catch (e: Exception) {
+                binding.tvCatFact.text = "Gagal mengambil fakta kucing."
             }
         }
     }

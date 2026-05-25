@@ -23,6 +23,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -30,6 +31,7 @@
         <activity
             android:name=".BaseActivity"
             android:exported="false" />
+
         <activity
             android:name=".AuthActivity"
             android:exported="false" />
@@ -41,6 +43,7 @@
         <activity
             android:name=".Home.pertemuan_3.ThirdActivity"
             android:exported="false" />
+
         <activity
             android:name=".Home.pertemuan_3.ThirdResultActivity"
             android:exported="false" />
@@ -52,6 +55,7 @@
         <activity
             android:name=".Home.pertemuan_5.FifthActivity"
             android:exported="false" />
+
         <activity
             android:name=".Home.pertemuan_5.WebViewActivity"
             android:exported="false" />
@@ -62,10 +66,12 @@
 
         <activity
             android:name=".Home.pertemuan_9.NinthActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
             android:exported="false" />
 
         <activity
             android:name=".home.pertemuan_10.TenthActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
             android:exported="false" />
 
     </application>
