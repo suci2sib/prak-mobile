@@ -15,7 +15,7 @@ class TenthTabsAdapter(activity: FragmentActivity) : FragmentStateAdapter(activi
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> TabAFragment()
-            1 -> TabBFragment()
+            1 ->  TabBFragment()
             2 -> TabCFragment() // Tambahan untuk Tab C (Produk)
             else -> throw IllegalStateException("Posisi tidak valid")
         }

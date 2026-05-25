@@ -1,11 +1,17 @@
 package com.example.suciapps.message
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.suciapps.Message.tutorial.TutorialMessageActivity
+import com.example.suciapps.R
 import com.example.suciapps.databinding.FragmentMessageBinding
 
 class MessageFragment : Fragment() {
@@ -38,13 +44,35 @@ class MessageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Setup Toolbar
+        // Setup Toolbar judul aplikasi
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "Message"
 
-        // 6️⃣ Pasang Adapter ke ListView
+        // Mengaktifkan Option Menu agar tombol menu di toolbar fragment bisa terbaca
+        setHasOptionsMenu(true)
+
+        // 6️⃣ Pasang Adapter ke ListView data chat pesan
         val adapter = MessageAdapter(requireContext(), messageList)
         binding.listMessageItems.adapter = adapter
+    }
+
+    // Meng-inflate menu khusus toolbar (message_toolbar_menu.xml) ke dalam ActionBar
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.message_toolbar_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    // Menangani aksi klik pada tombol ic_info di toolbar
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.ic_info -> {
+                // Ketika ikon ic_info ditekan, pindah ke TutorialMessageActivity
+                val intent = Intent(requireContext(), TutorialMessageActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onDestroyView() {

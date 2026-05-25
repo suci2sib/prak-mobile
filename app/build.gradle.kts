@@ -54,6 +54,7 @@ dependencies {
     
     // Glide
     implementation(libs.glide.core)
+    implementation("com.tbuonomo:dotsindicator:5.1.0")
     kapt(libs.glide.compiler)
 
     testImplementation(libs.junit)

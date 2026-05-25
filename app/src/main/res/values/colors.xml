@@ -3,4 +3,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="biru">#FFFf11</color>
+    <color name="abu_gelap">#808080</color>
 </resources>
