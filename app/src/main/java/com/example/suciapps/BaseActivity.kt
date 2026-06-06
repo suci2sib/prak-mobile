@@ -11,6 +11,8 @@ import com.example.suciapps.databinding.ActivityBaseBinding
 import com.example.suciapps.home.HomeFragment
 import com.example.suciapps.message.MessageFragment
 import com.example.suciapps.more.MoreFragment
+// Tambahkan import untuk FragmentNote di sini
+import com.example.suciapps.Note.FragmentNote
 
 class BaseActivity : AppCompatActivity() {
 
@@ -43,6 +45,11 @@ class BaseActivity : AppCompatActivity() {
                 }
                 R.id.message -> {
                     replaceFragment(MessageFragment())
+                    true
+                }
+                // Ini dia jalur baru untuk menu Note yang baru ditambahkan
+                R.id.note -> {
+                    replaceFragment(FragmentNote())
                     true
                 }
                 R.id.more -> {

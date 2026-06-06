@@ -5,3 +5,8 @@ plugins {
     alias(libs.plugins.kotlin.kapt) apply false
     alias(libs.plugins.ksp) apply false
 }
+
+// 👇 Tambahkan 3 baris ini di bagian paling bawah
+tasks.register("clean", Delete::class) {
+    delete(rootProject.layout.buildDirectory)
+}

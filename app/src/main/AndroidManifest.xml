@@ -74,6 +74,17 @@
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
             android:exported="false" />
 
+        <activity
+            android:name=".Note.NoteFormActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+            android:exported="false" />
+
+        <!-- Tambahan halaman Form Input Tugas Kuliah (To-Do List) -->
+        <activity
+            android:name=".more.TodoFormActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+            android:exported="false" />
+
     </application>
 
 </manifest>
