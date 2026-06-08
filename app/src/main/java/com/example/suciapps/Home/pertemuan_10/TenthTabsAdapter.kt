@@ -1,10 +1,11 @@
-package com.example.suciapps.home.pertemuan_10
+package com.example.suciapps.Home.pertemuan_10
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.suciapps.Home.pertemuan_10.TabAFragment
 import com.example.suciapps.Home.pertemuan_10.TabBFragment
+import com.example.suciapps.home.pertemuan_10.TabCFragment
 
 class TenthTabsAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
 

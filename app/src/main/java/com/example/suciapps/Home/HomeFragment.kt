@@ -1,4 +1,3 @@
-// 1. Sesuaikan package paling atas menggunakan H besar agar sinkron dengan folder asli
 package com.example.suciapps.home
 
 import android.content.Context
@@ -13,6 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.core.content.edit
 import com.example.suciapps.AuthActivity
+import com.example.suciapps.Home.pertemuan_10.TenthActivity
+import com.example.suciapps.Home.pertemuan_13.ThirteenthActivity
 import com.example.suciapps.Home.pertemuan_2.SecondActivity
 import com.example.suciapps.Home.pertemuan_3.ThirdActivity
 import com.example.suciapps.Home.pertemuan_4.FourthActivity
@@ -21,9 +22,6 @@ import com.example.suciapps.Home.pertemuan_7.SeventhActivity
 import com.example.suciapps.Home.pertemuan_9.NinthActivity
 import com.example.suciapps.data.api.CatFactApiClient
 import com.example.suciapps.databinding.FragmentHomeBinding
-import com.example.suciapps.home.pertemuan_10.TenthActivity
-// Pastikan package ApiClient kamu sudah sesuai, di bawah ini adalah perkiraan standar paketnya:
-// import com.example.suciapps.network.CatFactApiClient
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
@@ -92,6 +90,11 @@ class HomeFragment : Fragment() {
                 move(TenthActivity::class.java)
             }
 
+            // Tombol Pertemuan 13 (Camera Capture)
+            btnToThirteenth.setOnClickListener {
+                move(ThirteenthActivity::class.java)
+            }
+
             // Fungsi Logout
             btnLogout.setOnClickListener {
                 val sharedPref = requireContext().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
@@ -117,7 +120,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    // 2. PERBAIKAN: Mengubah Class<*> menjadi Class<out AppCompatActivity> agar tipenya aman dan spesifik
+    // Menggunakan AppCompatActivity agar tipenya aman
     private fun move(cls: Class<out AppCompatActivity>) {
         startActivity(Intent(requireContext(), cls))
     }

@@ -1,4 +1,4 @@
-package com.example.suciapps.message
+package com.example.suciapps.Message
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment
 import com.example.suciapps.Message.tutorial.TutorialMessageActivity
 import com.example.suciapps.R
 import com.example.suciapps.databinding.FragmentMessageBinding
+import com.example.suciapps.message.MessageAdapter
+import com.example.suciapps.message.MessageModel
 
 class MessageFragment : Fragment() {
 

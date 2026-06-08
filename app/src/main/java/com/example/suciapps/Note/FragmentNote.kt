@@ -1,4 +1,4 @@
-package com.example.suciapps.Note
+package com.example.suciapps.note
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.suciapps.Note.NoteAdapter
+import com.example.suciapps.Note.NoteFormActivity
 import com.example.suciapps.data.model.AppDatabase
 import com.example.suciapps.databinding.FragmentNoteBinding
 

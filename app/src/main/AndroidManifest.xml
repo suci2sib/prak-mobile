@@ -3,6 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" /> <!-- Hanya untuk Android 9 ke bawah -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -14,75 +21,78 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SuciApps">
 
-        <activity
-            android:name=".Message.tutorial.TutorialMessageActivity"
-            android:exported="false" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
+        <!-- 1. Splash Screen sebagai Launcher -->
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".BaseActivity"
-            android:exported="false" />
-
+        <!-- 2. Auth & Main Flow -->
         <activity
             android:name=".AuthActivity"
             android:exported="false" />
 
         <activity
-            android:name=".Home.pertemuan_2.SecondActivity"
+            android:name=".BaseActivity"
             android:exported="false" />
 
+        <!-- 3. Pertemuan-Pertemuan (Sesuaikan dengan Package Name asli) -->
+        <activity
+            android:name=".Home.pertemuan_2.SecondActivity"
+            android:exported="false" />
         <activity
             android:name=".Home.pertemuan_3.ThirdActivity"
             android:exported="false" />
-
-        <activity
-            android:name=".Home.pertemuan_3.ThirdResultActivity"
-            android:exported="false" />
-
         <activity
             android:name=".Home.pertemuan_4.FourthActivity"
             android:exported="false" />
-
         <activity
             android:name=".Home.pertemuan_5.FifthActivity"
             android:exported="false" />
-
-        <activity
-            android:name=".Home.pertemuan_5.WebViewActivity"
-            android:exported="false" />
-
         <activity
             android:name=".Home.pertemuan_7.SeventhActivity"
             android:exported="false" />
-
         <activity
             android:name=".Home.pertemuan_9.NinthActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
 
         <activity
-            android:name=".home.pertemuan_10.TenthActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+            android:name=".Home.pertemuan_13.ThirteenthActivity"
             android:exported="false" />
 
+        <!-- 4. Fitur Lainnya (Note, Message, More) -->
         <activity
             android:name=".Note.NoteFormActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+
+        <activity
+            android:name=".Message.tutorial.TutorialMessageActivity"
             android:exported="false" />
 
-        <!-- Tambahan halaman Form Input Tugas Kuliah (To-Do List) -->
+        <!-- Perhatikan: TodoFormActivity menggunakan package 'more' (huruf kecil) -->
         <activity
             android:name=".more.TodoFormActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+
+        <activity
+            android:name=".MainActivity"
             android:exported="false" />
 
     </application>

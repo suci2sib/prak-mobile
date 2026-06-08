@@ -6,13 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import com.example.suciapps.Message.MessageFragment
+import com.example.suciapps.More.MoreFragment
 import com.example.suciapps.databinding.ActivityBaseBinding
 // Import fragment dari package-nya masing-masing
 import com.example.suciapps.home.HomeFragment
-import com.example.suciapps.message.MessageFragment
-import com.example.suciapps.more.MoreFragment
 // Tambahkan import untuk FragmentNote di sini
-import com.example.suciapps.Note.FragmentNote
+import com.example.suciapps.note.FragmentNote
 
 class BaseActivity : AppCompatActivity() {
 

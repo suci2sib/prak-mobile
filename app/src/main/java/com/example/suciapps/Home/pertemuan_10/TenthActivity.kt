@@ -1,4 +1,4 @@
-package com.example.suciapps.home.pertemuan_10
+package com.example.suciapps.Home.pertemuan_10
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.suciapps.R
 import com.example.suciapps.databinding.ActivityThirdBinding
+import com.example.suciapps.home.pertemuan_3.ThirdResultActivity
 
 class ThirdActivity : AppCompatActivity() {
     private lateinit var binding: ActivityThirdBinding
